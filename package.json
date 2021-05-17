@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "preserve": "npm run build",
-    "serve": "echo \"hello world\"",
+    "serve": "echo \"This command does nothing!\"",
     "dev": "cross-env NODE_ENV=development nodemon app.ts",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node dist/app.js",
@@ -23,9 +23,11 @@
     "typescript": "4.2.4"
   },
   "dependencies": {
+    "axios": "0.21.1",
     "cross-env": "7.0.3",
     "express": "4.17.1",
     "helmet": "4.6.0",
+    "mongoose": "5.12.9",
     "rimraf": "3.0.2"
   }
 }
