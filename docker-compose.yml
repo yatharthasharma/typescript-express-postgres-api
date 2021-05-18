@@ -8,7 +8,7 @@ services:
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
-      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_HOST_AUTH_METHOD=trust # NOT recommended for anything other than local/dev environments - this disables the need for using your password!
       - PGDATA=/var/lib/postgresql/data/latest
     networks:
       - postgres_network
@@ -20,16 +20,16 @@ services:
     depends_on:
       - postgres
     environment: 
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com # this is used to sign in to the pgadmin console
       - PGADMIN_DEFAULT_PASSWORD=admin
     volumes:
       - pgadmin:/var/lib/pgadmin
     networks:
       - postgres_network
     links:
-      - "postgres:db"
+      - "postgres:db" # you can use 'db' as the hostname when connecting to postgres from your pgadmin UI
     ports:
-      - 8080:80
+      - 8080:80 # will make the UI run on localhost:8080
 volumes:
   postgres:
   pgadmin:

@@ -27,6 +27,8 @@
     "cross-env": "7.0.3",
     "express": "4.17.1",
     "helmet": "4.6.0",
-    "rimraf": "3.0.2"
+    "pg": "8.6.0",
+    "rimraf": "3.0.2",
+    "sequelize": "6.6.2"
   }
 }
