@@ -1,5 +1,5 @@
 {
-  "name": "typescript-playground",
+  "name": "typescript-express-postgres-api",
   "version": "1.0.0",
   "description": "",
   "main": "dist/app.js",
@@ -27,7 +27,6 @@
     "cross-env": "7.0.3",
     "express": "4.17.1",
     "helmet": "4.6.0",
-    "mongoose": "5.12.9",
     "rimraf": "3.0.2"
   }
 }

@@ -7,7 +7,7 @@ router.get('/health', (req: Request, res: Response) => {
 });
 
 router.get('*', (req: Request, res: Response) => {
-  return res.send('BAD PATH!');
+  return res.status(404).send('BAD PATH!');
 });
 
 
