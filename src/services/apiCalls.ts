@@ -12,5 +12,6 @@ export const apiCaller = async (params: { url: string; method: Method; data: any
     return response;
   } catch (error: any) {
     console.error('Example error!');
+    return {};
   }
 }

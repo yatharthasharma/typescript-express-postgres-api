@@ -1,4 +1,9 @@
 {
   "editor.formatOnSave": true,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  // use this as a reference to not go over the 100 character limit for a line otherwise
+  // linting will usually throw an error
+  "editor.rulers": [
+    100
+  ],
 }
