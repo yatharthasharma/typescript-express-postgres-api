@@ -1,0 +1,35 @@
+services:
+  elasticsearch:
+    image: elasticsearch:7.12.1
+    container_name: elasticsearch
+    environment:
+      - ES_JAVA_OPTS=-Xmx256m -Xms256m
+      - discovery.type=single-node
+    networks:
+      - elk-stack
+  logstash:
+    image: logstash:7.12.1
+    environment:
+      - ES_JAVA_OPTS=-Xmx256m -Xms256m
+    networks:
+      - elk-stack
+    depends_on:
+      - elasticsearch
+    links:
+      - "elasticsearch:es"
+  kibana:
+    image: kibana:7.12.1
+    links:
+      - "elasticsearch:es"
+    environment:
+      - ELASTICSEARCH_URL=es
+      - server.host=0.0.0.0
+    networks:
+      - elk-stack
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
+networks:
+  elk-stack:
+    driver: bridge
