@@ -1,6 +1,8 @@
 import express, { Express } from 'express';
 import helmet from 'helmet';
 import { Sequelize } from 'sequelize';
+import { Server as WSS } from 'ws';
+import { kafkaSubscribe } from './kafka/consumer';
 
 const app: Express = express();
 
@@ -11,7 +13,7 @@ app.use(helmet());
 app.use('/', require('./src/routes/index'));
 
 // setup database connection
-const sequelize: Sequelize = new Sequelize('postgres', 'admin', 'admin', {
+const sequelize: Sequelize = new Sequelize('postgres', 'postgres', 'postgres', {
   host: 'localhost',
   dialect: 'postgres',
   logging: false,
@@ -49,3 +51,17 @@ const gracefulExit = (exitCode: 0 | 1) => {
     })
     .catch(() => console.error('Unable to close database connection.'));
 };
+
+const wss = new WSS({ server, path: '/' });
+
+// when you need to send messages back to clients
+// const sendMessageOverSocket = (message: Message): void => {
+//   wss.clients.forEach((client): void => {
+//     client.send(message.value);
+//   });
+// };
+
+wss.on('listening', (): void => {
+  console.log('WebSocket message ==============>>>>>>>>>>');
+  kafkaSubscribe('teststream');
+});

@@ -3,8 +3,8 @@ services:
     image: elasticsearch:7.12.1
     container_name: elasticsearch
     environment:
-      - ES_JAVA_OPTS=-Xmx256m -Xms256m
-      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xmx256m -Xms256m  # Java memory allocation
+      - discovery.type=single-node      # this is for a local/dev environment!
     networks:
       - elk-stack
   logstash:

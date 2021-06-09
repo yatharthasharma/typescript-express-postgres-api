@@ -6,8 +6,9 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data/latest
     environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=gateway
       - POSTGRES_HOST_AUTH_METHOD=trust # NOT recommended for anything other than local/dev environments - this disables the need for using your password!
       - PGDATA=/var/lib/postgresql/data/latest
     networks:
