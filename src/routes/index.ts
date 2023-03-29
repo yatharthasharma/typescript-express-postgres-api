@@ -8,7 +8,7 @@ router.get('/health', (req: Request, res: Response) => {
 });
 
 router.get('/producer', (req: Request, res: Response) => {
-  const arr = ['NANA', 'lol', 'bahahha', 'nopsi', 'ellie', 'hyogyung', 'kafka'];
+  const arr = ['sequelize', 'api', 'kafka'];
   kafkaProducer('teststream', arr[Math.floor(Math.random() * arr.length)]);
   return res.send('OK!');
 });
