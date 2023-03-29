@@ -7,13 +7,6 @@ router.get('/health', (req: Request, res: Response) => {
   return res.send('OK!');
 });
 
-router.get('/producer', (req: Request, res: Response) => {
-  const arr = ['sequelize', 'api', 'kafka'];
-  kafkaProducer('teststream', arr[Math.floor(Math.random() * arr.length)]);
-  return res.send('OK!');
-});
-
-
 router.get('*', (req: Request, res: Response) => {
   return res.status(404).send('BAD PATH!');
 });
